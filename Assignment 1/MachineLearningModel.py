@@ -105,8 +105,8 @@ class KNNRegressionModel(MachineLearningModel):
 
             dist.sort()
             neighbors = dist[:self.k]
-            y_values = [y for distance, y in neighbors]
-            prediction = np.mean(y_values)
+            y_value = [y for distance, y in neighbors]
+            prediction = np.mean(y_value)
             predictions.append(prediction)
         return np.array(predictions)
              
@@ -177,6 +177,31 @@ class KNNClassificationModel(MachineLearningModel):
         predictions (array-like): Predicted values.
         """
         #--- Write your code here ---#
+        predictions = []
+        for x in X:
+            dist = []
+            for i, xData in enumerate(self.X_train):
+                distance = np.sqrt(np.sum((x - xData)**2))
+                y_value = self.y_train[i]
+                dist.append((distance, y_value))
+            dist.sort()
+            neighbors = dist[:self.k]
+        
+            count_data = {}
+            for cnt, y in neighbors:
+                if  y in count_data:
+                    count_data[y] += 1
+                else:
+                    count_data[y] = 1
+            prediction = max(count_data, key=count_data.get)
+            predictions.append(prediction) 
+            
+        return np.array(predictions)
+            
+
+
+
+
 
 
     def evaluate(self, y_true, y_predicted):
