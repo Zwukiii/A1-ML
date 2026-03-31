@@ -218,3 +218,4 @@ class KNNClassificationModel(MachineLearningModel):
         score (float): Evaluation score.
         """
         #--- Write your code here ---#
+        return np.sum(y_true == y_predicted)
