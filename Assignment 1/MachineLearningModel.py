@@ -111,6 +111,7 @@ class KNNRegressionModel(MachineLearningModel):
         return np.array(predictions)
              
 
+
     def evaluate(self, y_true, y_predicted):
         """
         Evaluate the model on the given data.
