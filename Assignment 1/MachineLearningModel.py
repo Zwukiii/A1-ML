@@ -126,6 +126,8 @@ class KNNRegressionModel(MachineLearningModel):
         score (float): Evaluation score.
         """
         #--- Write your code here ---#
+        return np.mean((y_true - y_predicted) ** 2)
+        
 
 class KNNClassificationModel(MachineLearningModel):
     """
@@ -158,6 +160,10 @@ class KNNClassificationModel(MachineLearningModel):
         None
         """
         #--- Write your code here ---#
+        self.X_train = np.array(X)
+        self.y_train = np.array(y)
+        return None
+
 
     def predict(self, X):
         """
@@ -171,6 +177,7 @@ class KNNClassificationModel(MachineLearningModel):
         predictions (array-like): Predicted values.
         """
         #--- Write your code here ---#
+
 
     def evaluate(self, y_true, y_predicted):
         """
