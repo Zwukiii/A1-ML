@@ -77,6 +77,7 @@ class KNNRegressionModel(MachineLearningModel):
         None
         """
         #--- Write your code here ---#
+       
         self.X_train = np.array(X) # initialize x to the input as an numpy array
         self.y_train = np.array(y) #initialize y to be the output as an numpy array
         return None
@@ -93,6 +94,22 @@ class KNNRegressionModel(MachineLearningModel):
         predictions (array-like): Predicted values.
         """
         #--- Write your code here ---#
+        predictions = []
+        for x in X:
+            dist = [] # Stores the euclidean distances.
+            for i, xData in enumerate(self.X_train):
+             distance = np.sqrt(np.sum((x - xData)**2))
+             y = self.y_train[i]
+        
+             dist.append((distance, y))
+
+            dist.sort()
+            neighbors = dist[:self.k]
+            y_values = [y for distance, y in neighbors]
+            prediction = np.mean(y_values)
+            predictions.append(prediction)
+        return np.array(predictions)
+             
 
     def evaluate(self, y_true, y_predicted):
         """
