@@ -18,7 +18,7 @@ class MachineLearningModel(ABC):
         Returns:
         None
         """
-       pass 
+        pass
     @abstractmethod
     def predict(self, X):
         """
