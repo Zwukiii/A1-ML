@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import numpy as np
 
 class MachineLearningModel(ABC):
     """
@@ -17,8 +18,7 @@ class MachineLearningModel(ABC):
         Returns:
         None
         """
-        pass
-
+       pass 
     @abstractmethod
     def predict(self, X):
         """
@@ -77,6 +77,9 @@ class KNNRegressionModel(MachineLearningModel):
         None
         """
         #--- Write your code here ---#
+        self.X_train = np.array(X) # initialize x to the input as an numpy array
+        self.y_train = np.array(y) #initialize y to be the output as an numpy array
+        return None
 
     def predict(self, X):
         """
